@@ -1,4 +1,4 @@
-package com.lifesafetydevices;
+package com.lifesafetydevices.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -13,6 +13,8 @@ import net.minecraft.item.BlockItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.lifesafetydevices.block.WhiteExitSignBlock;
+
 
 public class LifeSafetyDevices implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("life-safety-devices");
