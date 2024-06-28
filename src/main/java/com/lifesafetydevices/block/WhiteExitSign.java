@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-public class WhiteExitSignBlock extends HorizontalFacingBlock {
+public class WhiteExitSign extends HorizontalFacingBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     // voxel shape
@@ -23,7 +23,7 @@ public class WhiteExitSignBlock extends HorizontalFacingBlock {
     private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(1, 3, 0, 15, 12, 3);
     private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(13, 3, 1, 16, 12, 15);
 
-    public WhiteExitSignBlock(Settings settings) {
+    public WhiteExitSign(Settings settings) {
         super(settings.luminance((state) -> 3));
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
