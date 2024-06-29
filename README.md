@@ -10,3 +10,4 @@ Currently, there are no releases of this mod because it does not have enough stu
 - Horn only
 - Speaker Strobe (will likely play pre-recorded voice evac message)
 - Speaker (will likely play pre-recorded voice evac message)
+- Maybe door closer

@@ -1,6 +1,7 @@
 package com.lifesafetydevices;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -9,6 +10,8 @@ import net.minecraft.util.Identifier;
 
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +28,11 @@ public class LifeSafetyDevices implements ModInitializer {
     public static final Block TEST = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 
     // item group
-    public static final LifeSafetyItemGroup ITEM_GROUP = LifeSafetyItemGroup.INSTANCE;
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
+        new Identifier("lifesafetydevices", "general"),
+        () -> new ItemStack(BG_12)
+    );
+    
 
     @Override
     public void onInitialize() {
