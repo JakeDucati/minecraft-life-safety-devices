@@ -1,10 +1,12 @@
 {
     "variants": {
-        "facing=north": { "model": "lifesafetydevices:block/bg-12", "uvlock": true },
-        "facing=east":  { "model": "lifesafetydevices:block/bg-12", "y":  90, "uvlock": true },
-        "facing=south": { "model": "lifesafetydevices:block/bg-12", "y": 180, "uvlock": true },
-        "facing=west":  { "model": "lifesafetydevices:block/bg-12", "y": 270, "uvlock": true },
-        "activated=false": { "model": "lifesafetydevices:block/bg-12", "uvlock": true },
-        "activated=true": { "model": "lifesafetydevices:block/bg-12_activated", "uvlock": true }
+        "facing=north,activated=false": { "model": "lifesafetydevices:block/bg-12", "uvlock": true },
+        "facing=east,activated=false":  { "model": "lifesafetydevices:block/bg-12", "y":  90, "uvlock": true },
+        "facing=south,activated=false": { "model": "lifesafetydevices:block/bg-12", "y": 180, "uvlock": true },
+        "facing=west,activated=false":  { "model": "lifesafetydevices:block/bg-12", "y": 270, "uvlock": true },
+        "facing=north,activated=true": { "model": "lifesafetydevices:block/bg-12_activated", "uvlock": true },
+        "facing=east,activated=true":  { "model": "lifesafetydevices:block/bg-12_activated", "y":  90, "uvlock": true },
+        "facing=south,activated=true": { "model": "lifesafetydevices:block/bg-12_activated", "y": 180, "uvlock": true },
+        "facing=west,activated=true":  { "model": "lifesafetydevices:block/bg-12_activated", "y": 270, "uvlock": true }
     }
 }
