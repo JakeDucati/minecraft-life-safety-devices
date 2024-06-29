@@ -24,20 +24,23 @@ public class LifeSafetyDevices implements ModInitializer {
     public static final Block BG_12 = new BG12(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block TEST = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 
+    // item group
+    public static final LifeSafetyItemGroup ITEM_GROUP = LifeSafetyItemGroup.INSTANCE;
+
     @Override
     public void onInitialize() {
         LOGGER.info("Hello Fabric world!");
 
         // white exit sign
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "white_exit_sign"), WHITE_EXIT_SIGN);
-        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "white_exit_sign"), new BlockItem(WHITE_EXIT_SIGN, new FabricItemSettings()));
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "white_exit_sign"), new BlockItem(WHITE_EXIT_SIGN, new FabricItemSettings().group(ITEM_GROUP)));
 
         // bg-12 pull station
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "bg-12"), BG_12);
-        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "bg-12"), new BlockItem(BG_12, new FabricItemSettings()));
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "bg-12"), new BlockItem(BG_12, new FabricItemSettings().group(ITEM_GROUP)));
 
         // test
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "test"), TEST);
-        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "test"), new BlockItem(TEST, new FabricItemSettings()));
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "test"), new BlockItem(TEST, new FabricItemSettings().group(ITEM_GROUP)));
     }
 }
