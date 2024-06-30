@@ -33,6 +33,7 @@ import net.minecraft.state.property.Properties;
 public class BG12 extends HorizontalFacingBlock implements Waterloggable {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty ACTIVATED = BooleanProperty.of("activated");
+    public static final BooleanProperty PULSE = BooleanProperty.of("pulse");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     // Voxel shapes for different orientations
@@ -47,6 +48,7 @@ public class BG12 extends HorizontalFacingBlock implements Waterloggable {
         this.setDefaultState(this.stateManager.getDefaultState()
             .with(FACING, Direction.NORTH)
             .with(ACTIVATED, false)
+            // .with(PULSE, false) maybe use this (when active, pulse instead of constant signal)
             // waterlog
             .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
             .with(WATERLOGGED, false)
@@ -92,20 +94,18 @@ public class BG12 extends HorizontalFacingBlock implements Waterloggable {
         boolean currentState = state.get(ACTIVATED);
         ItemStack heldItem = player.getStackInHand(hand);
 
-        if (!world.isClient) {
-            if (heldItem.getItem() instanceof KeyItem) {
-                if (currentState) {
-                    world.setBlockState(pos, state.with(ACTIVATED, false));
-                    world.playSound(null, pos, ModSounds.BG12_RESET, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResult.SUCCESS;
-                }
-            } else {
-                if (!currentState) {
-                    world.setBlockState(pos, state.with(ACTIVATED, true));
-                    world.playSound(null, pos, ModSounds.BG12_ACTIVATION, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResult.SUCCESS;
-                }
-            }
+        if (world.isClient) {
+            return ActionResult.PASS;
+        }
+
+        if (heldItem.getItem() instanceof KeyItem && currentState) {
+            world.setBlockState(pos, state.with(ACTIVATED, false));
+            world.playSound(null, pos, ModSounds.BG12_RESET, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            return ActionResult.SUCCESS;
+        } else if (!currentState) {
+            world.setBlockState(pos, state.with(ACTIVATED, true));
+            world.playSound(null, pos, ModSounds.BG12_ACTIVATION, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            return ActionResult.SUCCESS;  
         }
         return ActionResult.PASS;
     }
