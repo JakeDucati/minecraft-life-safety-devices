@@ -9,15 +9,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.text.Text;
 
-public class BG12Item extends BlockItem {
+public class WhiteExitSignItem extends BlockItem {
 
-    public BG12Item(Block block, Settings settings) {
+    public WhiteExitSignItem(Block block, Settings settings) {
         super(block, settings);
     }
     
     @Override
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.lifesafetydevices.bg-12"));
+        tooltip.add(Text.translatable("tooltip.lifesafetydevices.white_exit_sign"));
         super.appendTooltip(stack, world, tooltip, context);
     }
 }

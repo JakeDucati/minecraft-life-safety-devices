@@ -1,0 +1,12 @@
+{
+    "bg-12_activation": {
+        "sounds": [
+            "lifesafetydevices:bg-12/activation"
+        ]
+    },
+    "bg-12_reset": {
+        "sounds": [
+            "lifesafetydevices:bg-12/reset"
+        ]
+    }
+}

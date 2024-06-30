@@ -5,7 +5,8 @@ Currently, there are no releases of this mod because it does not have enough stu
 
 # Future Additions
 - Other exit signs (including glass ceiling ones)
-- Horn Strobe
+- 270-SPO Pull Station
+- Horn Strobe (maybe System Sensor L-Series)
 - Strobe only
 - Horn only
 - Speaker Strobe (will likely play pre-recorded voice evac message)
