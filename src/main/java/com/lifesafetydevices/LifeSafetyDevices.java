@@ -37,6 +37,7 @@ public class LifeSafetyDevices implements ModInitializer {
     public static final Block TEST = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 
     // items
+    public static final Item KEY_ITEM = new KeyItem(new Item.Settings().group(ITEM_GROUP));
     public static final Item BG_12_ITEM = new BG12Item(BG_12, new FabricItemSettings().group(ITEM_GROUP));
     public static final Item WHITE_EXIT_SIGN_ITEM = new WhiteExitSignItem(WHITE_EXIT_SIGN, new FabricItemSettings().group(ITEM_GROUP));
     
@@ -47,6 +48,9 @@ public class LifeSafetyDevices implements ModInitializer {
         
         // sounds
         ModSounds.registerSounds();
+
+        // key
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "key"), KEY_ITEM);
 
         // white exit sign
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "white_exit_sign"), WHITE_EXIT_SIGN);
