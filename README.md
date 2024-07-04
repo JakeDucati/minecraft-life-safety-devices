@@ -2,6 +2,7 @@
  Fabric Minecraft mod that adds various life safety devices in buildings to Minecraft such as exit signs, fire alarm devices, etc.
 # Information
 Currently, there are no releases of this mod because it does not have enough stuff in it for it to be considered a release. If you want to use this mod, you can download the source code and build it.
+**The source code is currently for Fabric 1.19.2 only.**
 
 # Future Additions
 - Other exit signs (including glass ceiling ones)
