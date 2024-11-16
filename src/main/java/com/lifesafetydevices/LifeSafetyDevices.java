@@ -21,31 +21,32 @@ import org.slf4j.LoggerFactory;
 import com.lifesafetydevices.block.*;
 import com.lifesafetydevices.item.*;
 
-
 public class LifeSafetyDevices implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("life-safety-devices");
 
     // item group
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-        new Identifier("lifesafetydevices", "general"),
-        () -> new ItemStack(com.lifesafetydevices.LifeSafetyDevices.BG_12_ITEM)
-    );
+            new Identifier("lifesafetydevices", "general"),
+            () -> new ItemStack(com.lifesafetydevices.LifeSafetyDevices.BG_12_ITEM));
 
     // blocks
-    public static final Block WHITE_EXIT_SIGN = new WhiteExitSign(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+    public static final Block WHITE_EXIT_SIGN = new WhiteExitSign(
+            FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block BG_12 = new BG12(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block TEST = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+    public static final Block FIRE_BELL = new FireBell(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 
     // items
     public static final Item KEY_ITEM = new KeyItem(new Item.Settings().group(ITEM_GROUP));
     public static final Item BG_12_ITEM = new BG12Item(BG_12, new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item WHITE_EXIT_SIGN_ITEM = new WhiteExitSignItem(WHITE_EXIT_SIGN, new FabricItemSettings().group(ITEM_GROUP));
-    
+    public static final Item WHITE_EXIT_SIGN_ITEM = new WhiteExitSignItem(WHITE_EXIT_SIGN,
+            new FabricItemSettings().group(ITEM_GROUP));
+    public static final Item FIRE_BELL_ITEM = new BG12Item(FIRE_BELL, new FabricItemSettings().group(ITEM_GROUP));
 
     @Override
     public void onInitialize() {
         LOGGER.info("Hello Fabric world!");
-        
+
         // sounds
         ModSounds.registerSounds();
 
@@ -62,6 +63,10 @@ public class LifeSafetyDevices implements ModInitializer {
 
         // test
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "test"), TEST);
-        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "test"), new BlockItem(TEST, new FabricItemSettings().group(ITEM_GROUP)));
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "test"),
+                new BlockItem(TEST, new FabricItemSettings().group(ITEM_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "fire_bell"), FIRE_BELL);
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "fire_bell"), FIRE_BELL_ITEM);
     }
 }
