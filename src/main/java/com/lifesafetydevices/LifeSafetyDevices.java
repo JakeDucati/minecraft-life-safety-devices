@@ -54,8 +54,10 @@ public class LifeSafetyDevices implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "key"), KEY_ITEM);
 
         // white exit sign
-        Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "white_exit_sign"), WHITE_EXIT_SIGN);
-        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "white_exit_sign"), WHITE_EXIT_SIGN_ITEM);
+        Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "white_exit_sign"),
+                WHITE_EXIT_SIGN);
+        Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "white_exit_sign"),
+                WHITE_EXIT_SIGN_ITEM);
 
         // bg-12 pull station
         Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "bg-12"), BG_12);

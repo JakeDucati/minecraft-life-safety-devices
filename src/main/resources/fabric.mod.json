@@ -3,13 +3,13 @@
 	"id": "life-safety-devices",
 	"version": "${version}",
 	"name": "Life Safety Devices",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Fabric Minecraft mod that adds various life safety devices in buildings to Minecraft such as exit signs, fire alarm devices, etc.",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/JakeDucati/minecraft-life-safety-devices",
+		"sources": "https://github.com/JakeDucati/minecraft-life-safety-devices"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/life-safety-devices/icon.png",

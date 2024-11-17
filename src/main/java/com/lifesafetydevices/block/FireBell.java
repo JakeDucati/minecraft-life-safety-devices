@@ -9,7 +9,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -23,7 +22,14 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
+import com.lifesafetydevices.ModSounds;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class FireBell extends HorizontalFacingBlock implements Waterloggable {
+
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty ACTIVATED = BooleanProperty.of("activated");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -34,16 +40,20 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
     private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(3, 2, 0, 13, 14, 3);
     private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(13, 2, 3, 16, 14, 13);
 
-    private static final long LOOP_INTERVAL = 20; // The interval for looping in ticks (20 ticks = 1 second)
-    private long lastLoopTime = 0; // Tracks the last time the sound was played
+    private static final int LOOP_INTERVAL_TICKS = 40; // 2 seconds at 20 ticks per second
+
+    // Map to track which blocks are active and when they last played the sound
+    private static final Map<BlockPos, Long> activeBellMap = new HashMap<>();
 
     public FireBell(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(ACTIVATED, false)
-                .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
                 .with(WATERLOGGED, false));
+
+        // Register the server tick event listener
+        ServerTickEvents.END_WORLD_TICK.register(this::onServerTick);
     }
 
     @Override
@@ -55,19 +65,15 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
                 .with(FACING, ctx.getPlayerFacing().getOpposite())
-                // waterlog
-                .with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite())
                 .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).isOf(Fluids.WATER));
     }
 
-    // waterlog
     @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
-    // waterlog
     @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
@@ -98,43 +104,50 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
         };
     }
 
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return getOutlineShape(state, world, pos, context);
-    }
-
-    // redstone
     @SuppressWarnings("deprecation")
     @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block neighborBlock, BlockPos neighborPos,
-            boolean notify) {
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean notify) {
         super.neighborUpdate(state, world, pos, neighborBlock, neighborPos, notify);
 
         if (world.isClient) {
-            return; // Do not play sound on the client side
+            return; // Only handle sound on the server side
         }
 
-        // Get the current redstone power at the position
-        int power = world.getReceivedRedstonePower(pos);
+        boolean powered = world.isReceivingRedstonePower(pos);
 
-        // If powered and not activated, play sound and set activated
-        if (power > 0 && !state.get(ACTIVATED)) {
-            world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.setBlockState(pos, state.with(ACTIVATED, true)); // Set block to activated
+        if (powered && !state.get(ACTIVATED)) {
+            // If powered and not activated, activate the bell and start the sound loop
+            world.setBlockState(pos, state.with(ACTIVATED, true));
+            activeBellMap.put(pos, world.getTime()); // Store the current server time when the bell is activated
+        } else if (!powered && state.get(ACTIVATED)) {
+            // If not powered and previously activated, deactivate and stop sound
+            world.setBlockState(pos, state.with(ACTIVATED, false));
+            activeBellMap.remove(pos); // Remove the bell from active map when it's deactivated
         }
-        // If power is off and was previously activated, reset the state
-        else if (power == 0 && state.get(ACTIVATED)) {
-            world.setBlockState(pos, state.with(ACTIVATED, false)); // Reset block to unpowered
+    }
+
+    // This method will be called every server tick
+    private void onServerTick(World world) {
+        if (world.isClient()) {
+            return; // We don't want this running on the client
         }
 
-        // If the block is activated, loop the sound based on interval
-        if (state.get(ACTIVATED)) {
-            long currentTime = world.getTime();
+        long currentTime = world.getTime(); // Get the current server time
 
-            // Play sound at intervals
-            if (currentTime % LOOP_INTERVAL == 0 && currentTime > lastLoopTime) {
-                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_HARP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                lastLoopTime = currentTime; // Update the last played time
+        // Iterate over all active bells and check if it's time to play the sound
+        for (Map.Entry<BlockPos, Long> entry : activeBellMap.entrySet()) {
+            BlockPos pos = entry.getKey();
+            long lastPlayedTime = entry.getValue();
+
+            // If the current time exceeds the last played time by the LOOP_INTERVAL_TICKS (2 seconds)
+            if (currentTime - lastPlayedTime >= LOOP_INTERVAL_TICKS) {
+                BlockState state = world.getBlockState(pos);
+                if (state.get(ACTIVATED)) {
+                    // Play the sound for the FireBell
+                    world.playSound(null, pos, ModSounds.FIRE_BELL_RING, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    // Update the last played time to the current time
+                    activeBellMap.put(pos, currentTime);
+                }
             }
         }
     }

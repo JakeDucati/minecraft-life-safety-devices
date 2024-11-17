@@ -11,12 +11,7 @@
     },
     "fire_bell": {
         "sounds": [
-            "lifesafetydevices:bg-12/fire_bell"
-        ]
-    },
-    "fire_bell_end": {
-        "sounds": [
-            "lifesafetydevices:bg-12/fire_bell_end"
+            "lifesafetydevices:fire_bell/fire_bell_ring"
         ]
     }
 }
