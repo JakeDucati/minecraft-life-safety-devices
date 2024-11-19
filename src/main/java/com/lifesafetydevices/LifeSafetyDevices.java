@@ -41,7 +41,8 @@ public class LifeSafetyDevices implements ModInitializer {
     public static final Item BG_12_ITEM = new BG12Item(BG_12, new FabricItemSettings().group(ITEM_GROUP));
     public static final Item WHITE_EXIT_SIGN_ITEM = new WhiteExitSignItem(WHITE_EXIT_SIGN,
             new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item FIRE_BELL_ITEM = new BG12Item(FIRE_BELL, new FabricItemSettings().group(ITEM_GROUP));
+    public static final Item FIRE_BELL_ITEM = new FireBellItem(FIRE_BELL,
+            new FabricItemSettings().group(ITEM_GROUP));
 
     @Override
     public void onInitialize() {
