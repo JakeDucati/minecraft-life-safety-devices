@@ -129,7 +129,7 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
     // This method will be called every server tick
     private void onServerTick(World world) {
         if (world.isClient()) {
-            return; // We don't want this running on the client
+            return;
         }
 
         long currentTime = world.getTime(); // Get the current server time
@@ -143,9 +143,7 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
             if (currentTime - lastPlayedTime >= LOOP_INTERVAL_TICKS) {
                 BlockState state = world.getBlockState(pos);
                 if (state.get(ACTIVATED)) {
-                    // Play the sound for the FireBell
                     world.playSound(null, pos, ModSounds.FIRE_BELL_RING, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    // Update the last played time to the current time
                     activeBellMap.put(pos, currentTime);
                 }
             }

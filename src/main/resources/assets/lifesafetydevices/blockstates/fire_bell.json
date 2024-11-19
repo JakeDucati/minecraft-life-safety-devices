@@ -1,13 +1,13 @@
 {
     "variants": {
-        "facing=north,activated=false": { "model": "lifesafetydevices:block/fire_bell", "uvlock": true },
-        "facing=east,activated=false":  { "model": "lifesafetydevices:block/fire_bell", "y":  90, "uvlock": true },
-        "facing=south,activated=false": { "model": "lifesafetydevices:block/fire_bell", "y": 180, "uvlock": true },
-        "facing=west,activated=false":  { "model": "lifesafetydevices:block/fire_bell", "y": 270, "uvlock": true },
+        "facing=north,activated=false": { "model": "lifesafetydevices:block/fire_bell" },
+        "facing=east,activated=false":  { "model": "lifesafetydevices:block/fire_bell", "y":  90 },
+        "facing=south,activated=false": { "model": "lifesafetydevices:block/fire_bell", "y": 180 },
+        "facing=west,activated=false":  { "model": "lifesafetydevices:block/fire_bell", "y": 270 },
         
-        "facing=north,activated=true": { "model": "lifesafetydevices:block/fire_bell", "uvlock": true },
-        "facing=east,activated=true":  { "model": "lifesafetydevices:block/fire_bell", "y":  90, "uvlock": true },
-        "facing=south,activated=true": { "model": "lifesafetydevices:block/fire_bell", "y": 180, "uvlock": true },
-        "facing=west,activated=true":  { "model": "lifesafetydevices:block/fire_bell", "y": 270, "uvlock": true }
+        "facing=north,activated=true": { "model": "lifesafetydevices:block/fire_bell" },
+        "facing=east,activated=true":  { "model": "lifesafetydevices:block/fire_bell", "y":  90 },
+        "facing=south,activated=true": { "model": "lifesafetydevices:block/fire_bell", "y": 180 },
+        "facing=west,activated=true":  { "model": "lifesafetydevices:block/fire_bell", "y": 270 }
     }
 }
