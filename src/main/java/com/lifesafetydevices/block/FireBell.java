@@ -8,6 +8,7 @@ import net.minecraft.block.Waterloggable;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -106,7 +107,8 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean notify) {
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block neighborBlock, BlockPos neighborPos,
+            boolean notify) {
         super.neighborUpdate(state, world, pos, neighborBlock, neighborPos, notify);
 
         if (world.isClient) {
@@ -127,8 +129,8 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
     }
 
     // This method will be called every server tick
-    private void onServerTick(World world) {
-        if (world.isClient()) {
+    private void onServerTick(ServerWorld world) {
+        if (world.isClient()) { // No need to check this for ServerWorld, but keeping for logic consistency.
             return;
         }
 
@@ -139,11 +141,17 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
             BlockPos pos = entry.getKey();
             long lastPlayedTime = entry.getValue();
 
-            // If the current time exceeds the last played time by the LOOP_INTERVAL_TICKS (2 seconds)
+            // If the current time exceeds the last played time by the LOOP_INTERVAL_TICKS
             if (currentTime - lastPlayedTime >= LOOP_INTERVAL_TICKS) {
                 BlockState state = world.getBlockState(pos);
                 if (state.get(ACTIVATED)) {
-                    world.playSound(null, pos, ModSounds.FIRE_BELL_RING, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.playSound(
+                            null,
+                            pos,
+                            ModSounds.FIRE_BELL_RING,
+                            SoundCategory.BLOCKS,
+                            1.0F,
+                            1.0F);
                     activeBellMap.put(pos, currentTime);
                 }
             }
