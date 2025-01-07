@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "lifesafetydevices:block/small_horn_strobe" },
+        "facing=east":  { "model": "lifesafetydevices:block/small_horn_strobe", "y":  90 },
+        "facing=south": { "model": "lifesafetydevices:block/small_horn_strobe", "y": 180 },
+        "facing=west":  { "model": "lifesafetydevices:block/small_horn_strobe", "y": 270 }
+    }
+}
