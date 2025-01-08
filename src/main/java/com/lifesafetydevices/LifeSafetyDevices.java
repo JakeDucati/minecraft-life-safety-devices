@@ -40,6 +40,7 @@ public class LifeSafetyDevices implements ModInitializer {
 
         // items
         public static final Item KEY_ITEM = new KeyItem(new Item.Settings().group(ITEM_GROUP));
+        public static final Item SCREWDRIVER_ITEM = new ScrewdriverItem(new Item.Settings().group(ITEM_GROUP));
         public static final Item BG_12_ITEM = new BG12Item(BG_12, new FabricItemSettings().group(ITEM_GROUP));
         public static final Item WHITE_EXIT_SIGN_ITEM = new WhiteExitSignItem(WHITE_EXIT_SIGN,
                         new FabricItemSettings().group(ITEM_GROUP));
@@ -57,6 +58,9 @@ public class LifeSafetyDevices implements ModInitializer {
 
                 // key
                 Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "key"), KEY_ITEM);
+
+                // screwdriver
+                Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "screwdriver"), SCREWDRIVER_ITEM);
 
                 // white exit sign
                 Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "white_exit_sign"),

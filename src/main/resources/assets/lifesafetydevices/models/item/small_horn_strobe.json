@@ -8,9 +8,9 @@
 	"elements": [
 		{
 			"name": "base",
-			"from": [5, 2, 15],
-			"to": [11, 12, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7, 3, 14]},
+			"from": [5, 3, 15],
+			"to": [11, 13, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 4, 14]},
 			"faces": {
 				"north": {"uv": [0, 0, 3, 5], "texture": "#0"},
 				"east": {"uv": [6, 3, 6.5, 8], "texture": "#0"},
@@ -22,9 +22,9 @@
 		},
 		{
 			"name": "lens",
-			"from": [5.5, 1.75, 14.9],
-			"to": [10.5, 4.75, 15.65],
-			"rotation": {"angle": -22.5, "axis": "x", "origin": [7, 2.75, 13.9]},
+			"from": [5.5, 2.75, 14.9],
+			"to": [10.5, 5.75, 15.65],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [7, 3.75, 13.9]},
 			"faces": {
 				"north": {"uv": [6, 0, 8.5, 1.5], "texture": "#0"},
 				"east": {"uv": [7.5, 6, 7.875, 7.5], "texture": "#0"},
@@ -36,9 +36,9 @@
 		},
 		{
 			"name": "cover",
-			"from": [5, 5, 14],
-			"to": [11, 12, 15],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7, 3, 13]},
+			"from": [5, 6, 14],
+			"to": [11, 13, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 4, 13]},
 			"faces": {
 				"north": {"uv": [0, 5, 3, 8.5], "texture": "#0"},
 				"east": {"uv": [7, 3, 7.5, 6.5], "texture": "#0"},
