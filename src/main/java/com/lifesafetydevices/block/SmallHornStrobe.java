@@ -27,9 +27,9 @@ public class SmallHornStrobe extends HorizontalFacingBlock implements Waterlogga
 
     // Voxel shapes for different orientations
     private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(5, 3, 14, 11, 13, 16);
-    private static final VoxelShape SHAPE_EAST = Block.createCuboidShape(0, 3, 3, 3, 13, 13);
-    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(3, 3, 0, 13, 13, 3);
-    private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(13, 3, 3, 16, 13, 13);
+    private static final VoxelShape SHAPE_EAST = Block.createCuboidShape(0, 3, 5, 2, 13, 11);
+    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(5, 3, 0, 11, 13, 2);
+    private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(14, 3, 5, 16, 13, 11);
 
     public SmallHornStrobe(Settings settings) {
         super(settings);
