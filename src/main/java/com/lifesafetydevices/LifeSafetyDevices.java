@@ -37,6 +37,7 @@ public class LifeSafetyDevices implements ModInitializer {
         public static final Block FIRE_BELL = new FireBell(FabricBlockSettings.of(Material.METAL).strength(4.0f));
         public static final Block SMALL_HORN_STROBE = new SmallHornStrobe(
                         FabricBlockSettings.of(Material.METAL).strength(4.0f));
+        public static final Block HORN_STROBE = new HornStrobe(FabricBlockSettings.of(Material.GLASS).strength(4.0f).nonOpaque());
 
         // items
         public static final Item KEY_ITEM = new KeyItem(new Item.Settings().group(ITEM_GROUP));
@@ -47,6 +48,8 @@ public class LifeSafetyDevices implements ModInitializer {
         public static final Item FIRE_BELL_ITEM = new FireBellItem(FIRE_BELL,
                         new FabricItemSettings().group(ITEM_GROUP));
         public static final Item SMALL_HORN_STROB_ITEM = new SmallHornStrobeItem(SMALL_HORN_STROBE,
+                        new FabricItemSettings().group(ITEM_GROUP));
+        public static final Item HORN_STROB_ITEM = new HornStrobeItem(HORN_STROBE,
                         new FabricItemSettings().group(ITEM_GROUP));
 
         @Override
@@ -81,7 +84,13 @@ public class LifeSafetyDevices implements ModInitializer {
                 Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "fire_bell"), FIRE_BELL_ITEM);
 
                 // small horn strobe
-                Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "small_horn_strobe"), SMALL_HORN_STROBE);
-                Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "small_horn_strobe"), SMALL_HORN_STROB_ITEM);
+                Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "small_horn_strobe"),
+                                SMALL_HORN_STROBE);
+                Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "small_horn_strobe"),
+                                SMALL_HORN_STROB_ITEM);
+
+                // small horn strobe
+                Registry.register(Registry.BLOCK, new Identifier("lifesafetydevices", "horn_strobe"), HORN_STROBE);
+                Registry.register(Registry.ITEM, new Identifier("lifesafetydevices", "horn_strobe"), HORN_STROB_ITEM);
         }
 }

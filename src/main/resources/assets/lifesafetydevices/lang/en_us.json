@@ -5,6 +5,7 @@
     "tooltip.lifesafetydevices.white_exit_sign": "Red/green lettering. Left/right arrows. Ceiling/wall.",
     "tooltip.lifesafetydevices.fire_bell": "Rings while powered.",
     "tooltip.lifesafetydevices.small_horn_strobe": "Small but loud. Activated while powered.",
+    "tooltip.lifesafetydevices.horn_strobe": "Typical horn strobe. Activated while powered.",
 
     "item.lifesafetydevices.key": "Key",
     "item.lifesafetydevices.screwdriver": "Screwdriver",
@@ -13,6 +14,7 @@
     "block.lifesafetydevices.white_exit_sign": "White Exit Sign",
     "block.lifesafetydevices.fire_bell": "Fire Bell",
     "block.lifesafetydevices.small_horn_strobe": "Small Horn Strobe",
+    "block.lifesafetydevices.horn_strobe": "Horn Strobe",
 
     "itemGroup.lifesafetydevices.general": "Life Safety Devices"
 }

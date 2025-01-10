@@ -1,4 +1,4 @@
-package com.lifesafetydevices.block;
+package com.lifesafetydevices.base;
 
 import com.lifesafetydevices.ModSounds;
 import com.lifesafetydevices.item.KeyItem;
@@ -44,11 +44,13 @@ public abstract class PullStationBase extends HorizontalFacingBlock implements W
         builder.add(FACING, ACTIVATED, WATERLOGGED);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
             WorldAccess world, BlockPos pos, BlockPos neighborPos) {
