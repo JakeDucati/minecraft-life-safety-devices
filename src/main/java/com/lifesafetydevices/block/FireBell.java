@@ -36,10 +36,10 @@ public class FireBell extends HorizontalFacingBlock implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     // Voxel shapes for different orientations
-    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(3, 2, 13, 13, 14, 16);
-    private static final VoxelShape SHAPE_EAST = Block.createCuboidShape(0, 2, 3, 3, 14, 13);
-    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(3, 2, 0, 13, 14, 3);
-    private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(13, 2, 3, 16, 14, 13);
+    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(2, 2, 12, 14, 14, 16);
+    private static final VoxelShape SHAPE_EAST = Block.createCuboidShape(0, 2, 2, 4, 14, 14);
+    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(2, 2, 0, 14, 14, 4);
+    private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(12, 2, 2, 16, 14, 14);
 
     private static final int LOOP_INTERVAL_TICKS = 40; // 2 seconds at 20 ticks per second
 

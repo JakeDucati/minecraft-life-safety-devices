@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "lifesafetydevices:block/fire_bell",
-		"particle": "lifesafetydevices:block/fire_bell"
+		"0": "lifesafetydevices:item/fire_bell",
+		"particle": "lifesafetydevices:item/fire_bell"
 	},
 	"elements": [
 		{
@@ -66,7 +66,7 @@
 			"name": "side",
 			"from": [3, 13, 13],
 			"to": [13, 14, 15],
-			"rotation": {"angle": 0, "axis": "z", "origin": [8, 13.5, 14]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 13.5, 14]},
 			"faces": {
 				"north": {"uv": [9, 6.5, 14, 7], "texture": "#0"},
 				"east": {"uv": [2, 10, 3, 10.5], "texture": "#0"},
@@ -80,7 +80,7 @@
 			"name": "side",
 			"from": [3, 2, 13],
 			"to": [13, 3, 15],
-			"rotation": {"angle": 0, "axis": "z", "origin": [8, 2.5, 14]},
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 14]},
 			"faces": {
 				"north": {"uv": [9, 7.5, 14, 8], "texture": "#0"},
 				"east": {"uv": [4, 10, 5, 10.5], "texture": "#0"},
@@ -91,6 +91,31 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [55, 0, 0],
+			"translation": [0, 2.5, -2],
+			"scale": [0.43, 0.43, 0.43]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 101, 0],
+			"translation": [-0.75, 2, 1],
+			"scale": [0.46, 0.46, 0.46]
+		},
+		"ground": {
+			"translation": [0, 4, -5.25]
+		},
+		"gui": {
+			"rotation": [-149, 38, 0],
+			"translation": [-3.75, -2.25, 0]
+		},
+		"head": {
+			"translation": [0, 0, -14.25]
+		},
+		"fixed": {
+			"translation": [0, 0, -7]
+		}
+	},
 	"groups": [
 		{
 			"name": "main",
